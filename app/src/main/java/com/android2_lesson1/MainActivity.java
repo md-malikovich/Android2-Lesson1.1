@@ -74,16 +74,18 @@ public class MainActivity  extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration) || super.onSupportNavigateUp();
     }
 
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if(resultCode == RESULT_OK && requestCode == CODE) {
-//            Task task = (Task) data.getSerializableExtra("task");
-//            Log.e("ololo", "task = " + task.getTitle());
-//            //list.add(task);
-//            adapter.notifyDataSetChanged();
-//            }
-//        }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == RESULT_OK && requestCode == CODE) {
+            Task task = (Task) data.getSerializableExtra("task");
+            //HomeFragment fragment = new HomeFragment();
+            //fragment.onActivityResult(CODE, RESULT_OK, task);
+            Log.e("ololo", "task = " + task.getTitle());
+            //list.add(task);
+            //adapter.notifyDataSetChanged();
+            }
+        }
 
     @Override
     public void onBackPressed() {

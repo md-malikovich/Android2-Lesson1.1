@@ -61,10 +61,6 @@ public class HomeFragment extends Fragment {
         recyclerView.setAdapter(adapter);
     }
 
-    public void start() {
-        startActivityForResult(new Intent(getContext(), FormActivity.class), CODE);  ////////////////////////////////////////////TODO:
-    }
-
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -72,8 +68,8 @@ public class HomeFragment extends Fragment {
         if(resultCode == RESULT_OK && requestCode == CODE) {
                 Task task = (Task) data.getSerializableExtra("task");
                 Log.d("ololo", "receive task");
-                //list.add(task);
-                //adapter.notifyDataSetChanged();
+                list.add(task);
+                adapter.notifyDataSetChanged();
         }
     }
 }
