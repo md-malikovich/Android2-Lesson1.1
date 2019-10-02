@@ -28,15 +28,15 @@
         app:showAsAction="never" />
 
     <item android:id="@+id/file"
-        android:title="File" >
+        android:title="@string/file" >
         <!-- "File" submenu -->
         <menu>
             <item android:id="@+id/create_new"
-                android:title="New" />
+                android:title="@string/new1" />
             <item android:id="@+id/open"
-                android:title="Open" />
+                android:title="@string/open" />
             <item android:id="@+id/add"
-                android:title="Add" />
+                android:title="@string/add" />
         </menu>
     </item>
 

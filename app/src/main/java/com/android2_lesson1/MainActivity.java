@@ -5,6 +5,8 @@ import android.os.Bundle;
 import com.android2_lesson1.ui.home.HomeFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import android.util.Log;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import androidx.annotation.Nullable;
 import androidx.core.view.GravityCompat;
@@ -92,9 +94,31 @@ public class MainActivity  extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_login:
+                logIn();
+                return true;
+            case R.id.action_settings:
+                showSettings();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    public void logIn(){
+        //потом что-нибдуь придумаю
+    }
+
+    public void showSettings(){
+        //потом что-нибдуь придумаю
     }
 
     @Override
