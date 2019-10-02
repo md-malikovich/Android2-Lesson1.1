@@ -50,26 +50,28 @@ public class HomeFragment extends Fragment {
                 //textView.setText(s);
             }
         });
-        initList();                                                     ////////////////////////////////////////////TODO:
+        //initList();                                                     ////////////////////////////////////////////TODO:
         return root;
     }
 
-    private void initList() {
-        list = new ArrayList<>();
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new TaskAdapter(list);
-        recyclerView.setAdapter(adapter);
-    }
+    //private void initList() {
+        //list = new ArrayList<>();
+        //recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        //adapter = new TaskAdapter(list);
+        //recyclerView.setAdapter(adapter);
+    //}
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        getActivity();                                                               ////////////////////////////////////////////TODO:
-        if(resultCode == RESULT_OK && requestCode == CODE) {
-                Task task = (Task) data.getSerializableExtra("task");
-                Log.d("ololo", "receive task");
-                list.add(task);
-                adapter.notifyDataSetChanged();
-        }
-    }
+//    @Override
+//    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        getActivity();                                                               ////////////////////////////////////////////TODO:
+//        if(resultCode == RESULT_OK && requestCode == CODE) {
+//                Task task = (Task) data.getSerializableExtra("task");
+//                Log.d("ololo", "receive task");
+//                list.add(task);
+//                adapter.notifyDataSetChanged();
+//                MainActivity activity = (MainActivity) getActivity();
+//                activity.showHomeFragment();                                           ////////////////////////////////////////////TODO:
+        //}
+    //}
 }

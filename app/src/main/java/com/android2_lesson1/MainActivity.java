@@ -2,16 +2,12 @@ package com.android2_lesson1;
 
 import android.content.Intent;
 import android.os.Bundle;
-
 import com.android2_lesson1.ui.home.HomeFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import android.util.Log;
 import android.view.View;
 import androidx.annotation.Nullable;
 import androidx.core.view.GravityCompat;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
@@ -22,14 +18,17 @@ import com.google.android.material.navigation.NavigationView;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.Menu;
 
+import java.util.ArrayList;
+
 public class MainActivity  extends AppCompatActivity {
 
-    FragmentManager manager = getSupportFragmentManager();      ///////////////////////////////////////////////////////
-
     static final int CODE = 444;
+    TaskAdapter adapter;
+    RecyclerView recyclerView;
 
     private AppBarConfiguration mAppBarConfiguration;
 
@@ -37,6 +36,14 @@ public class MainActivity  extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        adapter = new TaskAdapter();
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setAdapter(adapter);
+
+        RecyclerView.LayoutManager manager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(manager);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -62,6 +69,28 @@ public class MainActivity  extends AppCompatActivity {
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == CODE){
+            if (resultCode == RESULT_OK){
+                Task task = (Task) data.getSerializableExtra(FormActivity.MY_KEY);
+                Log.d("ololo", "receive task");
+                adapter.addNewTask(task);
+            }
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        if(drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
@@ -74,28 +103,33 @@ public class MainActivity  extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration) || super.onSupportNavigateUp();
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == RESULT_OK && requestCode == CODE) {
-            Task task = (Task) data.getSerializableExtra("task");
+//    @Override
+//    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if(resultCode == RESULT_OK && requestCode == CODE) {
+//            Task task = (Task) data.getSerializableExtra(FormActivity.MY_KEY);
+//            adapter.addNewTask(task);
             //HomeFragment fragment = new HomeFragment();
             //fragment.onActivityResult(CODE, RESULT_OK, task);
-            Log.e("ololo", "task = " + task.getTitle());
-            //list.add(task);
-            //adapter.notifyDataSetChanged();
-            }
-        }
+//        if(resultCode == RESULT_OK && requestCode == CODE) {
+//            Task task = (Task) data.getSerializableExtra("task");
+//            //HomeFragment fragment = new HomeFragment();
+//            //fragment.onActivityResult(CODE, RESULT_OK, task);
+//            Log.e("ololo", "task = " + task.getTitle());
+//            //list.add(task);
+//            //adapter.notifyDataSetChanged();
+//            }
+      //  }
+   // }
 
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        if(drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
+//    public void showHomeFragment() {                                                      ////////////////////////////////////////////TODO:
+//        FragmentManager manager = getSupportFragmentManager();
+//        FragmentTransaction transaction = manager.beginTransaction();
+//        transaction.replace(R.id.container, new HomeFragment());
+//        transaction.commit();
+//    }
+
+
 }
 //+// 1. Меняем иконки шторки
 //+// 2. Нужно проверять поля на пустоту.

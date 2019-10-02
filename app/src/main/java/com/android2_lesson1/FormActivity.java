@@ -1,5 +1,6 @@
 package com.android2_lesson1;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import android.content.Intent;
@@ -12,12 +13,9 @@ import android.widget.Toast;
 
 import com.android2_lesson1.ui.home.HomeFragment;
 
-public class FormActivity  extends FragmentActivity {
+public class FormActivity extends AppCompatActivity {
 
-    static final String MY_KEY = "me_key";
-    FragmentManager manager = getSupportFragmentManager();
-    MainActivity activity;
-
+    static final String MY_KEY = "my_key";
     private EditText editTitle;
     private EditText editDesc;
     private Button save;
@@ -43,7 +41,7 @@ public class FormActivity  extends FragmentActivity {
                     toast.show();
                 } else {
                     Intent intent = new Intent();
-                    intent.putExtra("task", task);
+                    intent.putExtra(MY_KEY, task);
                     setResult(RESULT_OK, intent);
                     finish();
                     Log.d("ololo", "send task");

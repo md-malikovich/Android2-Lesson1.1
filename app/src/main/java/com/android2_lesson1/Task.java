@@ -28,8 +28,7 @@ public class Task implements Serializable {
         return title;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDesc() { return desc;
     }
 }
 
