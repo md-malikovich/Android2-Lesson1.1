@@ -1,16 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_login"
+        android:orderInCategory="100"
+        android:title="@string/login"
+        android:checkable="true"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_edit"
+        android:orderInCategory="100"
+        android:title="@string/edit"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_delete"
+        android:orderInCategory="100"
+        android:title="@string/delete"
+        app:showAsAction="never" />
+
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="@string/action_settings"
         app:showAsAction="never" />
 
-    <item
-        android:id="@+id/action_login"
-        android:orderInCategory="100"
-        android:title="@string/login"
-        app:showAsAction="never" />
+    <item android:id="@+id/file"
+        android:title="File" >
+        <!-- "File" submenu -->
+        <menu>
+            <item android:id="@+id/create_new"
+                android:title="New" />
+            <item android:id="@+id/open"
+                android:title="Open" />
+            <item android:id="@+id/add"
+                android:title="Add" />
+        </menu>
+    </item>
 
 </menu>

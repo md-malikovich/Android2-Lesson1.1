@@ -102,35 +102,4 @@ public class MainActivity  extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration) || super.onSupportNavigateUp();
     }
-
-//    @Override
-//    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if(resultCode == RESULT_OK && requestCode == CODE) {
-//            Task task = (Task) data.getSerializableExtra(FormActivity.MY_KEY);
-//            adapter.addNewTask(task);
-            //HomeFragment fragment = new HomeFragment();
-            //fragment.onActivityResult(CODE, RESULT_OK, task);
-//        if(resultCode == RESULT_OK && requestCode == CODE) {
-//            Task task = (Task) data.getSerializableExtra("task");
-//            //HomeFragment fragment = new HomeFragment();
-//            //fragment.onActivityResult(CODE, RESULT_OK, task);
-//            Log.e("ololo", "task = " + task.getTitle());
-//            //list.add(task);
-//            //adapter.notifyDataSetChanged();
-//            }
-      //  }
-   // }
-
-//    public void showHomeFragment() {                                                      ////////////////////////////////////////////TODO:
-//        FragmentManager manager = getSupportFragmentManager();
-//        FragmentTransaction transaction = manager.beginTransaction();
-//        transaction.replace(R.id.container, new HomeFragment());
-//        transaction.commit();
-//    }
-
-
 }
-//+// 1. Меняем иконки шторки
-//+// 2. Нужно проверять поля на пустоту.
-//-// 3. fragments onActivityResult

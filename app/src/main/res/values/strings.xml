@@ -16,4 +16,8 @@
     <string name="save">Save</string>
     <string name="text">Hello Android 7</string>
     <string name="login">Login</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
 </resources>

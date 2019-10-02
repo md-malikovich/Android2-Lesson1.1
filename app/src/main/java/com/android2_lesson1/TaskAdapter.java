@@ -4,10 +4,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,10 +13,9 @@ public class TaskAdapter extends RecyclerView.Adapter<ViewHolder> {
 
     private List<Task> list;
 
-    public TaskAdapter() { // List<Task> list
+    public TaskAdapter() {
         list = new ArrayList<>();
         list.add(new Task("Task #1", "Description #1"));
-        //this.list = list;
     }
 
     @NonNull
@@ -44,5 +41,4 @@ public class TaskAdapter extends RecyclerView.Adapter<ViewHolder> {
         notifyDataSetChanged();
         Log.d("ololo", "add New Task");
     }
-
 }

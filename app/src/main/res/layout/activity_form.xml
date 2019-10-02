@@ -12,14 +12,14 @@
         android:id="@+id/editTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Title"
+        android:hint="@string/title"
         android:inputType="textCapSentences"/>
 
     <EditText
         android:id="@+id/editDesc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Description"
+        android:hint="@string/description"
         android:inputType="textCapSentences"/>
 
     <Button

@@ -29,49 +29,19 @@ import static android.app.Activity.RESULT_OK;
 
 public class HomeFragment extends Fragment {
 
-    static final int CODE = 444;
-    private RecyclerView recyclerView;
-    private TaskAdapter adapter;
-    private List<Task> list;
-
     private HomeViewModel homeViewModel;
-    MainActivity activity;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         //final TextView textView = root.findViewById(R.id.text_home);
-        recyclerView = root.findViewById(R.id.recyclerView);
-
         homeViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 //textView.setText(s);
             }
         });
-        //initList();                                                     ////////////////////////////////////////////TODO:
         return root;
     }
-
-    //private void initList() {
-        //list = new ArrayList<>();
-        //recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        //adapter = new TaskAdapter(list);
-        //recyclerView.setAdapter(adapter);
-    //}
-
-//    @Override
-//    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        getActivity();                                                               ////////////////////////////////////////////TODO:
-//        if(resultCode == RESULT_OK && requestCode == CODE) {
-//                Task task = (Task) data.getSerializableExtra("task");
-//                Log.d("ololo", "receive task");
-//                list.add(task);
-//                adapter.notifyDataSetChanged();
-//                MainActivity activity = (MainActivity) getActivity();
-//                activity.showHomeFragment();                                           ////////////////////////////////////////////TODO:
-        //}
-    //}
 }
